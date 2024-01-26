@@ -6,19 +6,19 @@ import (
 )
 
 type SafeMap struct {
-	sync.RWMutex
+	mx            sync.RWMutex
 	concurrentMap map[int]int
 }
 
 func (sm *SafeMap) Add(key, digit int) {
-	sm.Lock()
-	defer sm.Unlock()
+	sm.mx.Lock()
+	defer sm.mx.Unlock()
 	sm.concurrentMap[key] = digit
 }
 
 func (sm *SafeMap) Get(key int) (int, error) {
-	sm.RLock()
-	defer sm.RUnlock()
+	sm.mx.RLock()
+	defer sm.mx.RUnlock()
 
 	if value, ok := sm.concurrentMap[key]; ok {
 		return value, nil
