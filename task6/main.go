@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+//Реализовать все возможные способы остановки выполнения горутины.
+
 var stopFlag int32
 
 func CLosedByChan(stop <-chan bool) {

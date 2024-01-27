@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+//Реализовать конкурентную запись данных в map.
+
 func main() {
 	fmt.Println("Safe map")
 	WithSafeMap()

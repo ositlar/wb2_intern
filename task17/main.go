@@ -5,6 +5,9 @@ import (
 	"strconv"
 )
 
+//Реализовать бинарный поиск встроенными методами языка.
+//Либо можно использовать sort (11 задание, функция BigSizeSearch)
+
 func main() {
 	var elems, target int
 

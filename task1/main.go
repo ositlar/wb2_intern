@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+//Дана структура Human (с произвольным набором полей и методов).
+//Реализовать встраивание методов в структуре Action от родительской структуры Human (аналог наследования).
+
 type Human struct {
 	height int
 	name   string
@@ -25,13 +28,13 @@ func (h *Human) ShowParametrs() string {
 }
 
 type Action struct {
-	Human
+	*Human
 	actionType string
 }
 
 func NewAction(human *Human, actionType string) *Action {
 	return &Action{
-		Human:      *human,
+		Human:      human,
 		actionType: actionType,
 	}
 }

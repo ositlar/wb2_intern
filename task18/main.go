@@ -6,6 +6,9 @@ import (
 	"sync/atomic"
 )
 
+// Реализовать структуру-счетчик, которая будет инкрементироваться в конкурентной среде.
+// По завершению программа должна выводить итоговое значение счетчика.
+
 // Можно и без mutex (будет быстрее),
 // но если во время выполнения нужно считывать этот счетчик, значение может отличаться от того, которое должно быть
 type ConcurrentCounter struct {
@@ -27,9 +30,10 @@ func main() {
 			counter.m.Lock()
 			defer counter.m.Unlock()
 			counter.Inc()
-			fmt.Println(counter.counter)
+			//fmt.Println(counter.counter)
 			wg.Done()
 		}()
 	}
 	wg.Wait()
+	fmt.Println(counter.counter)
 }
